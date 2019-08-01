@@ -1,7 +1,7 @@
 {
   "name": "jianshu",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "/jianshu",
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
