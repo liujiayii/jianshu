@@ -9,7 +9,7 @@ import {actionCreators} from './store'
 
 class Home extends PureComponent {
   componentDidMount() {
-    this.props.changeHomeData()
+    this.props.changeHomeData();
     this.bindEvents()
   }
 
@@ -17,7 +17,7 @@ class Home extends PureComponent {
     window.removeEventListener('scroll', this.props.changeScrollTopShow)
   }
 
-  handleScrollTop() {
+  static handleScrollTop() {
     window.scrollTo(0, 0)
   }
 
@@ -39,7 +39,7 @@ class Home extends PureComponent {
           <Recommend/>
           <Writer/>
         </HomeRight>
-        {this.props.showScroll ? <BackTop onClick={this.handleScrollTop}>顶部</BackTop> : ''}
+        {this.props.showScroll ? <BackTop onClick={Home.handleScrollTop}>顶部</BackTop> : ''}
       </HomeWrapper>
     )
   }
@@ -47,7 +47,7 @@ class Home extends PureComponent {
 
 const mapState = (state) => ({
   showScroll: state.getIn(['home', 'showScroll'])
-})
+});
 const mapDispatch = (dispatch) => ({
   changeHomeData() {
     dispatch(actionCreators.getHomeInfo())
@@ -59,6 +59,6 @@ const mapDispatch = (dispatch) => ({
       dispatch(actionCreators.toggleTopShow(false))
     }
   }
-})
+});
 
 export default connect(mapState, mapDispatch)(Home)
